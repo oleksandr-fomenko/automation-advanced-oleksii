@@ -16,7 +16,7 @@ public class LoginPage extends BasicPage implements Page {
         super(baseUrl);
     }
 
-    private final String url = StringUtils.join(baseUrl, PageUrls.LOGIN_PAGE.getPageUrl());
+    private final String url = StringUtils.join(baseUrl, PageUrls.LOGIN_PAGE.getUrl());
 
     private final SelenideElement loginInput = $(By.cssSelector("input[placeholder='Login']"));
     private final SelenideElement passwordInput = $(By.cssSelector("input[placeholder='Password']"));

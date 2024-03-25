@@ -4,12 +4,13 @@ import lombok.Getter;
 
 @Getter
 public enum PageUrls {
-    LOGIN_PAGE("/ui/#login"),
-    LAUNCHES_PAGE("/ui/#test_automation_advanced//launches/all");
+    LOGIN_PAGE("ui/#login"),
+    All_LAUNCHES_PAGE("ui/#{project_name}/launches/all"),
+    DASHBOARDS_PAGE("ui/#{project_name}/dashboard");
 
-    private String pageUrl;
+    private String url;
 
     PageUrls(String urlPath) {
-        this.pageUrl = urlPath;
+        this.url = urlPath;
     }
 }
