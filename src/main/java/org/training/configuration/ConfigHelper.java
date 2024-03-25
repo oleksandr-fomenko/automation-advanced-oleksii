@@ -13,6 +13,7 @@ public class ConfigHelper {
     private String projectName;
     private String testUsername;
     private String testUserPassword;
+    private String accessToken;
 
     public ConfigHelper() throws IOException {
         initProperties();
@@ -26,5 +27,6 @@ public class ConfigHelper {
         projectName = propertiesHelper.getPropertyValue("env.project.name");
         testUsername = propertiesHelper.getPropertyValue("env.username");
         testUserPassword = propertiesHelper.getDecodedPropertyValue("env.user.password");
+        accessToken = propertiesHelper.getDecodedPropertyValue("env.access.token");
     }
 }

@@ -36,6 +36,7 @@ public class TestSteps {
         open(loginPage.getUrl());
         SelenideElement loginInput = loginPage.getLoginInput();
         loginInput.shouldBe(visible);
+        LOGGER.info("Login page is opened.");
 
         loginInput.setValue(configHelper.getTestUsername());
         loginPage.getPasswordInput().setValue(configHelper.getTestUserPassword());
@@ -43,17 +44,20 @@ public class TestSteps {
 
         dashboardsPage = new DashboardsPage(baseUrl, configHelper.getProjectName());
         dashboardsPage.getPageTitle().shouldBe(visible);
+        LOGGER.info("Login successful.");
     }
 
-    public void openLaunchesPage() {
+    public void openAllLaunchesPage() {
         allLaunchesPage = new AllLaunchesPage(configHelper.getBaseUrl(), configHelper.getProjectName());
         open(allLaunchesPage.getUrl());
         allLaunchesPage.getPageSwitchDropdownTitle().shouldBe(visible);
+        LOGGER.info("All Launches page is opened.");
     }
 
     public void checkLaunchesExist() {
         allLaunchesPage = new AllLaunchesPage(configHelper.getBaseUrl(), configHelper.getProjectName());
         int numberOfLaunches = allLaunchesPage.getLaunches().size();
         assertTrue(numberOfLaunches > 0, "No launches found in a project.");
+        LOGGER.info("Launches existence check passed.");
     }
 }

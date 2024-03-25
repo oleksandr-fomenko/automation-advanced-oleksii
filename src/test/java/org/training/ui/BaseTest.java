@@ -4,7 +4,6 @@ import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 import org.training.configuration.SelenideConfigHelper;
 
 import java.io.IOException;
@@ -20,13 +19,5 @@ public class BaseTest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Test
-    public void smokeTest() {
-        TestSteps testSteps = new TestSteps();
-        testSteps.logIn();
-        testSteps.openLaunchesPage();
-        testSteps.checkLaunchesExist();
     }
 }

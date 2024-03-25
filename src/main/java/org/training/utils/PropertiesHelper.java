@@ -10,7 +10,6 @@ public class PropertiesHelper {
     }
 
     private final ClassLoader classLoader;
-
     private final String filePath;
     private String propertyValue;
 
