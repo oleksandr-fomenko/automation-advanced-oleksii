@@ -24,6 +24,6 @@ hs_err_pid*
 replay_pid*
 
 #folders
+.idea/
 target
 test-output
-.idea/
