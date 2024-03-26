@@ -26,4 +26,4 @@ replay_pid*
 #folders
 target
 test-output
-.idea
+.idea/

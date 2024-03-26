@@ -16,6 +16,7 @@ import static com.codeborne.selenide.Selenide.$$;
 public class AllLaunchesPage extends BasicPage implements Page {
     private final String projectName;
     private final String url;
+
     public AllLaunchesPage(String baseUrl, String projectName) {
         super(baseUrl);
         this.projectName = projectName;

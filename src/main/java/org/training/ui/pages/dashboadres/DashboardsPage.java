@@ -14,10 +14,12 @@ import static com.codeborne.selenide.Selenide.$;
 public class DashboardsPage extends BasicPage implements Page {
     private final String projectName;
     private final String url;
+
     public DashboardsPage(String baseUrl, String projectName) {
         super(baseUrl);
         this.projectName = projectName;
         this.url = StringUtils.join(baseUrl, PageUrls.DASHBOARDS_PAGE.getUrl().replace("{project_name}", projectName));
     }
+
     private final SelenideElement pageTitle = $(By.cssSelector("span[title='All Dashboards']"));
 }
