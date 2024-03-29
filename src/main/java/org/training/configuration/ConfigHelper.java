@@ -1,32 +1,50 @@
 package org.training.configuration;
 
-import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
-import org.training.utils.PropertiesHelper;
+import lombok.SneakyThrows;
+import org.aeonbits.owner.ConfigCache;
+import org.training.utils.EncryptionService;
 
-import java.io.IOException;
+import static com.codeborne.selenide.Configuration.pageLoadTimeout;
 
-@Getter
+
 public class ConfigHelper {
 
-    private String baseUrl;
-    private String projectName;
-    private String testUsername;
-    private String testUserPassword;
-    private String accessToken;
+    private final GeneralConfig config;
+    EncryptionService encrypter;
 
-    public ConfigHelper() throws IOException {
-        initProperties();
+    @SneakyThrows
+    public ConfigHelper() {
+        config = ConfigCache.getOrCreate(GeneralConfig.class);
+        encrypter = new EncryptionService(System.getenv("ENCRYPT_KEY"));
     }
 
-    public void initProperties() throws IOException {
-        String currentEnv = System.getProperty("env", "local");
-        PropertiesHelper propertiesHelper = new PropertiesHelper(getClass().getClassLoader(), StringUtils.join("./", currentEnv, "/application.properties"));
+    public String getBaseUrl() {
+        return config.baseUrl();
+    }
 
-        baseUrl = propertiesHelper.getPropertyValue("env.url");
-        projectName = propertiesHelper.getPropertyValue("env.project.name");
-        testUsername = propertiesHelper.getPropertyValue("env.username");
-        testUserPassword = propertiesHelper.getDecodedPropertyValue("env.user.password");
-        accessToken = propertiesHelper.getDecodedPropertyValue("env.access.token");
+    public String getProjectName() {
+        return config.projectName();
+    }
+
+    public String getTestUsername() {
+        return config.testUsername();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword() {
+        return encrypter.decrypt(config.testUserPassword());
+    }
+
+    @SneakyThrows
+    public String getAccessToken() {
+        return encrypter.decrypt(config.accessToken());
+    }
+
+    public void setUpSelenide() {
+        pageLoadTimeout = getPageLoadTimeout();
+    }
+
+    public Long getPageLoadTimeout() {
+        return config.pageLoadTimeout();
     }
 }

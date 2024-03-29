@@ -1,35 +1,26 @@
-package org.training.ui;
+package org.training.ui.steps;
 
 import com.codeborne.selenide.SelenideElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.training.configuration.ConfigHelper;
+import org.training.model.TestUser;
+import org.training.ui.BaseUiTest;
 import org.training.ui.pages.dashboadres.DashboardsPage;
 import org.training.ui.pages.launches.AllLaunchesPage;
 import org.training.ui.pages.login.LoginPage;
-
-import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestSteps {
+public class TestSteps extends BaseUiTest {
     static final Logger LOGGER = LogManager.getLogger(TestSteps.class);
     private LoginPage loginPage;
     private DashboardsPage dashboardsPage;
     private AllLaunchesPage allLaunchesPage;
-    private final ConfigHelper configHelper;
 
-    {
-        try {
-            configHelper = new ConfigHelper();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void logIn() {
+    public void logIn(TestUser testUser) {
         String baseUrl = configHelper.getBaseUrl();
         loginPage = new LoginPage(baseUrl);
         open(loginPage.getUrl());
@@ -37,8 +28,8 @@ public class TestSteps {
         loginInput.shouldBe(visible);
         LOGGER.info("Login page is opened.");
 
-        loginInput.setValue(configHelper.getTestUsername());
-        loginPage.getPasswordInput().setValue(configHelper.getTestUserPassword());
+        loginInput.setValue(testUser.username());
+        loginPage.getPasswordInput().setValue(testUser.userPassword());
         loginPage.getLoginButton().click();
 
         dashboardsPage = new DashboardsPage(baseUrl, configHelper.getProjectName());

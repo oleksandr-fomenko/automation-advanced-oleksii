@@ -4,14 +4,13 @@ import com.codeborne.selenide.SelenideElement;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
-import org.training.ui.pages.BasicPage;
-import org.training.ui.pages.Page;
+import org.training.ui.pages.AbstractPage;
 import org.training.ui.pages.PageUrls;
 
 import static com.codeborne.selenide.Selenide.$;
 
 @Getter
-public class LoginPage extends BasicPage implements Page {
+public class LoginPage extends AbstractPage {
     public LoginPage(String baseUrl) {
         super(baseUrl);
     }

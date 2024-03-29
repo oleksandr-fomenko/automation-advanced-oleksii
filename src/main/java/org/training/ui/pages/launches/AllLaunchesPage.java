@@ -5,15 +5,14 @@ import com.codeborne.selenide.SelenideElement;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
-import org.training.ui.pages.BasicPage;
-import org.training.ui.pages.Page;
+import org.training.ui.pages.AbstractPage;
 import org.training.ui.pages.PageUrls;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 @Getter
-public class AllLaunchesPage extends BasicPage implements Page {
+public class AllLaunchesPage extends AbstractPage {
     private final String projectName;
     private final String url;
 
