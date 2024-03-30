@@ -2,7 +2,6 @@ package org.training.ui.pages.login;
 
 import com.codeborne.selenide.SelenideElement;
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.training.ui.pages.AbstractPage;
 import org.training.ui.pages.PageUrls;
@@ -15,9 +14,11 @@ public class LoginPage extends AbstractPage {
         super(baseUrl);
     }
 
-    private final String url = StringUtils.join(baseUrl, PageUrls.LOGIN_PAGE.getUrl());
-
     private final SelenideElement loginInput = $(By.cssSelector("input[placeholder='Login']"));
     private final SelenideElement passwordInput = $(By.cssSelector("input[placeholder='Password']"));
     private final SelenideElement loginButton = $(By.cssSelector("button[title]"));
+
+    public String getUrl() {
+        return super.getUrl(PageUrls.LOGIN_PAGE.getUrl());
+    }
 }

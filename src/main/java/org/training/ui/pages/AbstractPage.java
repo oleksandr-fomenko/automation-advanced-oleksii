@@ -1,6 +1,7 @@
 package org.training.ui.pages;
 
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 
 @Getter
 public abstract class AbstractPage {
@@ -9,5 +10,8 @@ public abstract class AbstractPage {
     }
 
     protected String baseUrl;
-    public abstract String getUrl();
+
+    public String getUrl(String pageUrlPath) {
+        return StringUtils.join(baseUrl, pageUrlPath);
+    }
 }

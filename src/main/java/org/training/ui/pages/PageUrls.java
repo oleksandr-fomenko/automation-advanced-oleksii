@@ -8,7 +8,7 @@ public enum PageUrls {
     All_LAUNCHES_PAGE("ui/#{project_name}/launches/all"),
     DASHBOARDS_PAGE("ui/#{project_name}/dashboard");
 
-    private String url;
+    private final String url;
 
     PageUrls(String urlPath) {
         this.url = urlPath;
