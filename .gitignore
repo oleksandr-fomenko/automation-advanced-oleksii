@@ -26,4 +26,5 @@ replay_pid*
 #folders
 .idea/
 target
+build
 test-output

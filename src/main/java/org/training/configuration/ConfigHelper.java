@@ -26,13 +26,31 @@ public class ConfigHelper {
         return config.projectName();
     }
 
-    public String getTestUsername() {
-        return config.testUsername();
+    public String getTestUsername1() {
+        return config.testUsername1();
     }
 
     @SneakyThrows
-    public String getTestUserPassword() {
-        return encrypter.decrypt(config.testUserPassword());
+    public String getTestUserPassword1() {
+        return encrypter.decrypt(config.testUserPassword1());
+    }
+
+    public String getTestUsername2() {
+        return config.testUsername2();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword2() {
+        return encrypter.decrypt(config.testUserPassword2());
+    }
+
+    public String getTestUsername3() {
+        return config.testUsername3();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword3() {
+        return encrypter.decrypt(config.testUserPassword3());
     }
 
     @SneakyThrows
