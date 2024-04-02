@@ -52,6 +52,6 @@ public class LaunchesServiceTests extends BaseTest {
         int responseStatusCode = serviceResponse.getStatusCode();
         assertEquals(responseStatusCode, 200, "Service request failed.");
 
-        LOGGER.info("Get Launches Service filtered response test passed.");
+        LOGGER.info("Get Launches service filtered response test passed.");
     }
 }
