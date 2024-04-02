@@ -1,5 +1,8 @@
 package org.training.api;
 
+import lombok.Getter;
+
+@Getter
 public enum ServiceUrls {
     LAUNCHES_GET("api/v1/{project_name}/launch");
 

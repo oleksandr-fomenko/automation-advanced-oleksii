@@ -1,6 +1,5 @@
 package org.training.ui;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.DataProvider;
@@ -26,7 +25,6 @@ public class LaunchesTests extends BaseUiTest {
 
     @Test
     public void validateAllLaunchesList() {
-        LOGGER.info(StringUtils.join("Running in thread #", Thread.currentThread().getName()));
         testSteps.openAllLaunchesPage();
         testSteps.checkLaunchesExist();
         LOGGER.info("All Launches list test passed.");
@@ -37,7 +35,6 @@ public class LaunchesTests extends BaseUiTest {
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         testSteps.openAllLaunchesPage();
 
-        LOGGER.info(StringUtils.join("Running in thread #", Thread.currentThread().getName()));
         Method launchReportLinkClick = TestSteps.class.getMethod(linkClickMethodName);
         launchReportLinkClick.invoke(testSteps);
         testSteps.checkCurrentUrlsContainsText(expectedUrlText);

@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class TestUserHelper {
-    private Queue<TestUser> userQueue;
+    private final Queue<TestUser> userQueue;
 
     static final protected Logger LOGGER = LogManager.getLogger(TestUserHelper.class);
 
