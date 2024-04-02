@@ -37,8 +37,8 @@ public class LaunchesServiceTests extends BaseTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"passed", "failed", "skipped", "total"})
     @DisplayName("Launches Service request with filters check")
+    @ValueSource(strings = {"passed", "failed", "skipped", "total"})
     public void checkGetLaunchesServiceRequestWithFilters(String testResult) {
         String serviceEndpoint = ServiceUrlHelper.constructServiceUrl(configHelper, ServiceUrls.LAUNCHES_GET.getUrl());
 
