@@ -15,7 +15,7 @@ public class ConfigHelper {
     @SneakyThrows
     public ConfigHelper() {
         config = ConfigCache.getOrCreate(GeneralConfig.class);
-        encrypter = new EncryptionService(System.getenv("ENCRYPT_KEY"));
+        encrypter = new EncryptionService(System.getProperty("ENCRYPT_KEY"));
     }
 
     public String getBaseUrl() {
