@@ -5,6 +5,7 @@ import org.aeonbits.owner.ConfigCache;
 import org.training.utils.EncryptionService;
 
 import static com.codeborne.selenide.Configuration.pageLoadTimeout;
+import static com.codeborne.selenide.Configuration.timeout;
 
 
 public class ConfigHelper {
@@ -53,6 +54,24 @@ public class ConfigHelper {
         return encrypter.decrypt(config.testUserPassword3());
     }
 
+    public String getTestUsername4() {
+        return config.testUsername4();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword4() {
+        return encrypter.decrypt(config.testUserPassword4());
+    }
+
+    public String getTestUsername5() {
+        return config.testUsername5();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword5() {
+        return encrypter.decrypt(config.testUserPassword5());
+    }
+
     @SneakyThrows
     public String getAccessToken() {
         return encrypter.decrypt(config.accessToken());
@@ -60,9 +79,14 @@ public class ConfigHelper {
 
     public void setUpSelenide() {
         pageLoadTimeout = getPageLoadTimeout();
+        timeout = getGeneralTimeout();
     }
 
     public Long getPageLoadTimeout() {
         return config.pageLoadTimeout();
+    }
+
+    public Long getGeneralTimeout() {
+        return config.generalTimeout();
     }
 }

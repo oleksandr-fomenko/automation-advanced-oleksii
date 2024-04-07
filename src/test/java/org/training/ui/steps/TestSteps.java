@@ -9,6 +9,9 @@ import org.training.ui.pages.dashboadres.DashboardsPage;
 import org.training.ui.pages.launches.AllLaunchesPage;
 import org.training.ui.pages.login.LoginPage;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -22,6 +25,7 @@ public class TestSteps {
         this.configHelper = configHelper;
         allLaunchesPage = new AllLaunchesPage(configHelper.getBaseUrl(), configHelper.getProjectName());
     }
+
     static final Logger LOGGER = LogManager.getLogger(TestSteps.class);
 
     public void logIn(TestUser testUser) {
@@ -39,6 +43,15 @@ public class TestSteps {
         DashboardsPage dashboardsPage = new DashboardsPage(baseUrl, configHelper.getProjectName());
         dashboardsPage.getPageTitle().shouldBe(visible);
         LOGGER.info("Login successful.");
+    }
+
+    public void logOut() {
+        int notificationDisappearDelay = 15;
+        allLaunchesPage.getSignInSuccessNote().should(disappear, Duration.ofSeconds(notificationDisappearDelay));
+        allLaunchesPage.getUserMenuIcon().click();
+        allLaunchesPage.getUserMenu().getMenu().shouldBe(visible);
+        allLaunchesPage.getUserMenu().getLogOutLink().click();
+        LOGGER.info("Logout successful.");
     }
 
     public void openAllLaunchesPage() {

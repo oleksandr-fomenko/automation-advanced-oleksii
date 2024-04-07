@@ -32,9 +32,24 @@ public interface GeneralConfig extends Config {
     @Config.Key("env.user.password.3")
     String testUserPassword3();
 
+    @Config.Key("env.username.4")
+    String testUsername4();
+
+    @Config.Key("env.user.password.4")
+    String testUserPassword4();
+
+    @Config.Key("env.username.5")
+    String testUsername5();
+
+    @Config.Key("env.user.password.5")
+    String testUserPassword5();
+
     @Config.Key("env.access.token")
     String accessToken();
 
     @Config.Key("page.load.timeout")
     Long pageLoadTimeout();
+
+    @Config.Key("general.timeout")
+    Long generalTimeout();
 }
