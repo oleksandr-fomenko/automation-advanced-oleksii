@@ -6,5 +6,5 @@ import org.training.configuration.ConfigHelper;
 
 @Listeners({ReportPortalTestNGListener.class})
 public class BaseTest {
-    protected ConfigHelper configHelper = new ConfigHelper();
+    protected static ConfigHelper configHelper = new ConfigHelper();
 }

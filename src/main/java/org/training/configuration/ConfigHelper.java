@@ -5,6 +5,7 @@ import org.aeonbits.owner.ConfigCache;
 import org.training.utils.EncryptionService;
 
 import static com.codeborne.selenide.Configuration.pageLoadTimeout;
+import static com.codeborne.selenide.Configuration.timeout;
 
 
 public class ConfigHelper {
@@ -15,7 +16,7 @@ public class ConfigHelper {
     @SneakyThrows
     public ConfigHelper() {
         config = ConfigCache.getOrCreate(GeneralConfig.class);
-        encrypter = new EncryptionService(System.getenv("ENCRYPT_KEY"));
+        encrypter = new EncryptionService(System.getProperty("ENCRYPT_KEY"));
     }
 
     public String getBaseUrl() {
@@ -26,13 +27,49 @@ public class ConfigHelper {
         return config.projectName();
     }
 
-    public String getTestUsername() {
-        return config.testUsername();
+    public String getTestUsername1() {
+        return config.testUsername1();
     }
 
     @SneakyThrows
-    public String getTestUserPassword() {
-        return encrypter.decrypt(config.testUserPassword());
+    public String getTestUserPassword1() {
+        return encrypter.decrypt(config.testUserPassword1());
+    }
+
+    public String getTestUsername2() {
+        return config.testUsername2();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword2() {
+        return encrypter.decrypt(config.testUserPassword2());
+    }
+
+    public String getTestUsername3() {
+        return config.testUsername3();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword3() {
+        return encrypter.decrypt(config.testUserPassword3());
+    }
+
+    public String getTestUsername4() {
+        return config.testUsername4();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword4() {
+        return encrypter.decrypt(config.testUserPassword4());
+    }
+
+    public String getTestUsername5() {
+        return config.testUsername5();
+    }
+
+    @SneakyThrows
+    public String getTestUserPassword5() {
+        return encrypter.decrypt(config.testUserPassword5());
     }
 
     @SneakyThrows
@@ -42,9 +79,14 @@ public class ConfigHelper {
 
     public void setUpSelenide() {
         pageLoadTimeout = getPageLoadTimeout();
+        timeout = getGeneralTimeout();
     }
 
     public Long getPageLoadTimeout() {
         return config.pageLoadTimeout();
+    }
+
+    public Long getGeneralTimeout() {
+        return config.generalTimeout();
     }
 }

@@ -3,7 +3,7 @@ package org.training.ui.pages.dashboadres;
 import com.codeborne.selenide.SelenideElement;
 import lombok.Getter;
 import org.openqa.selenium.By;
-import org.training.ui.pages.BaseLoggedInPage;
+import org.training.ui.pages.baseLoggedInPage.BaseLoggedInPage;
 import org.training.ui.pages.PageUrls;
 
 import static com.codeborne.selenide.Selenide.$;

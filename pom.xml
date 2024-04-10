@@ -50,7 +50,9 @@
         <owner.version>1.0.8</owner.version>
         <apache.commons.lang3.version>3.14.0</apache.commons.lang3.version>
         <lombok.version>1.18.26</lombok.version>
+        <junit.jupiter.engine.version>5.10.1</junit.jupiter.engine.version>
         <junit.jupiter.api.version>5.10.1</junit.jupiter.api.version>
+        <junit.jupiter.params.version>5.10.1</junit.jupiter.params.version>
         <selenide.version>7.0.6</selenide.version>
         <selenide.core.version>7.0.6</selenide.core.version>
         <log4j.slf4j.impl.version>2.23.1</log4j.slf4j.impl.version>
@@ -95,8 +97,20 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.engine.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.jupiter.api.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.jupiter.params.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
