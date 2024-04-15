@@ -18,6 +18,8 @@ public class TestUserHelper {
             add(new TestUser(configHelper.getTestUsername1(), configHelper.getTestUserPassword1()));
             add(new TestUser(configHelper.getTestUsername2(), configHelper.getTestUserPassword2()));
             add(new TestUser(configHelper.getTestUsername3(), configHelper.getTestUserPassword3()));
+            add(new TestUser(configHelper.getTestUsername4(), configHelper.getTestUserPassword4()));
+            add(new TestUser(configHelper.getTestUsername5(), configHelper.getTestUserPassword5()));
         }};
     }
 
