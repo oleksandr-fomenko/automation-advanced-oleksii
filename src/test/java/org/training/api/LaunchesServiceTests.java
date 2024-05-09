@@ -139,9 +139,9 @@ public class LaunchesServiceTests extends BaseTest {
         LOGGER.info(String.format("Launch id to update: [%s] %n", launchId));
 
         String launchData = launches.get(launchId).getBody().asPrettyString();
-        String newLaunchDescription = "\"New Launch Description\"";
+        String newLaunchDescription = "New Launch Description";
 
-        String launchDataUpdated = launchData.replaceFirst("(?<=\"description\": )([^,]+)", newLaunchDescription);
+        String launchDataUpdated = launchData.replaceFirst("(?<=\"description\": \")([^\"]+)", newLaunchDescription);
 
         launches.update(launchId, launchDataUpdated)
                 .then()
