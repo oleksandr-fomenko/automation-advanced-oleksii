@@ -8,7 +8,7 @@ import org.training.configuration.ConfigHelper;
 
 import java.util.Map;
 
-public class GetLaunchesFilteredRequest<T> extends BaseRequest {
+public class GetLaunchesFilteredRequest extends BaseRequest {
     static final protected Logger LOGGER = LogManager.getLogger(GetLaunchesFilteredRequest.class);
 
     public GetLaunchesFilteredRequest(ConfigHelper configHelper) {
@@ -18,7 +18,7 @@ public class GetLaunchesFilteredRequest<T> extends BaseRequest {
         LOGGER.info(StringUtils.join("Service Url: [", method, " ", url, "]"));
     }
 
-    public Response execute(Map<String, T> parameters) {
+    public <T> Response execute(Map<String, T> parameters) {
         this.parameters = parameters;
         return super.execute();
     }

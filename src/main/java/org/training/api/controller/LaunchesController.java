@@ -7,7 +7,7 @@ import org.training.configuration.ConfigHelper;
 
 import java.util.Map;
 
-public class LaunchesController<T> {
+public class LaunchesController {
     private final ConfigHelper configHelper;
 
     public LaunchesController(ConfigHelper configHelper) {
@@ -26,8 +26,8 @@ public class LaunchesController<T> {
         return new GetLaunchRequest(configHelper, launchId).execute();
     }
 
-    public Response getFiltered(String filter, T value) {
-        return new GetLaunchesFilteredRequest<T>(configHelper).execute(Map.of(filter, value));
+    public <T> Response getFiltered(String filter, T value) {
+        return new GetLaunchesFilteredRequest(configHelper).execute(Map.of(filter, value));
     }
 
     public Response delete(int launchId) {
