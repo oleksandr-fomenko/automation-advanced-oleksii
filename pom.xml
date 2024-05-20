@@ -62,7 +62,9 @@
         <slf4j.simple.version>2.0.9</slf4j.simple.version>
         <epam.reportportal.agent.java.testng.version>5.3.1</epam.reportportal.agent.java.testng.version>
         <rest.assured.version>5.4.0</rest.assured.version>
+        <http.client.5.version>5.3.1</http.client.5.version>
         <cucumber.version>7.16.1</cucumber.version>
+        <couchbase.java.client.version>3.6.2</couchbase.java.client.version>
     </properties>
     <dependencies>
         <dependency>
@@ -154,6 +156,11 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${http.client.5.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
@@ -170,6 +177,11 @@
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.couchbase.client</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${couchbase.java.client.version}</version>
         </dependency>
     </dependencies>
     <repositories>
