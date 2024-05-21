@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.training.bdd.context.Context;
 import org.training.bdd.context.Memory;
 import org.training.model.TestUser;
-import org.training.ui.steps.TestSteps;
+import org.training.ui.steps.TestStepsSelenide;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -15,11 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StepDefinitions {
-    TestSteps testSteps;
+    TestStepsSelenide testSteps;
 
     @Given("I log in to Report Portal")
     public void logInToReportPortal() {
-        testSteps = new TestSteps(Context.getConfigHelper());
+        testSteps = new TestStepsSelenide(Context.getConfigHelper());
         TestUser user = Context.getTestUserHelper().getTestUser();
         Memory.set(StringUtils.join(Thread.currentThread().getName(), "_user"), user);
 
@@ -45,7 +45,7 @@ public class StepDefinitions {
 
         if (methodName != null) {
             try {
-                Method launchReportLinkClick = TestSteps.class.getMethod(methodName);
+                Method launchReportLinkClick = TestStepsSelenide.class.getMethod(methodName);
                 launchReportLinkClick.invoke(testSteps);
             } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
                 throw new RuntimeException(e);

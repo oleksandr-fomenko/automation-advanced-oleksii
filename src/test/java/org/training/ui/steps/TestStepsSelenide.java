@@ -17,16 +17,16 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestSteps {
+public class TestStepsSelenide implements TestSteps {
     private final ConfigHelper configHelper;
     private AllLaunchesPage allLaunchesPage;
 
-    public TestSteps(ConfigHelper configHelper) {
+    public TestStepsSelenide(ConfigHelper configHelper) {
         this.configHelper = configHelper;
         allLaunchesPage = new AllLaunchesPage(configHelper.getBaseUrl(), configHelper.getProjectName());
     }
 
-    static final Logger LOGGER = LogManager.getLogger(TestSteps.class);
+    static final Logger LOGGER = LogManager.getLogger(TestStepsSelenide.class);
 
     public void logIn(TestUser testUser) {
         String baseUrl = configHelper.getBaseUrl();
@@ -102,5 +102,15 @@ public class TestSteps {
     public void checkCurrentUrlsContainsText(String urlText) {
         assertTrue(url().contains(urlText), "Current url doesn't contain provided text.");
         LOGGER.info("Current URL check passed.");
+    }
+
+    @Override
+    public void selectLaunchInfoText(int launchNumber) {
+
+    }
+
+    @Override
+    public void closeDriver() {
+
     }
 }
