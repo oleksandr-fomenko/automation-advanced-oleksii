@@ -77,6 +77,10 @@ public class ConfigHelper {
         return encrypter.decrypt(config.accessToken());
     }
 
+    public String getSauceLabsUrl() {
+        return config.sauceLabsUrl();
+    }
+
     public void setUpSelenide() {
         pageLoadTimeout = getPageLoadTimeout();
         timeout = getGeneralTimeout();

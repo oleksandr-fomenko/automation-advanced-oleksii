@@ -47,6 +47,9 @@ public interface GeneralConfig extends Config {
     @Config.Key("env.access.token")
     String accessToken();
 
+    @Config.Key("env.sauce.labs.url")
+    String sauceLabsUrl();
+
     @Config.Key("page.load.timeout")
     Long pageLoadTimeout();
 
