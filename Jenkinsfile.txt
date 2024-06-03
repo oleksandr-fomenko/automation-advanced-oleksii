@@ -30,6 +30,11 @@ pipeline {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
                 }
+				//Slack integration
+				always {
+					slackSend channel: 'test-automation-results',
+					message: "Report Portal Regression Pipeline Results:- ${currentBuild.currentResult} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${BUILD_URL}"
+				}
             }
         }
     }
