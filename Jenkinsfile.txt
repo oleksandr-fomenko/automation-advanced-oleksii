@@ -7,11 +7,14 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+		stage('Checkout') {
             steps {
                 // Get some code from a GitHub repository
                 git branch: 'main', credentialsId: '9c7e1851-df17-4192-8fbf-8e81d2c86526', url: 'https://github.com/alSharkoff/automation-advanced.git'
-
+            }
+        }
+        stage('Build') {
+            steps {
                 // Run Maven on a Windows agent
                 bat "mvn clean package -Dmaven.test.skip=true"
             }
