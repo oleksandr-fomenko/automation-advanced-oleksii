@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M3"
+    }
+
+    stages {
+		stage('Checkout') {
+            steps {
+                // Get some code from a GitHub repository
+                git branch: 'main', credentialsId: '9c7e1851-df17-4192-8fbf-8e81d2c86526', url: 'https://github.com/alSharkoff/automation-advanced.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                // Run Maven on a Windows agent
+                bat "mvn clean package -Dmaven.test.skip=true"
+            }
+        }
+        stage('Test') {
+            steps {
+                withCredentials([string(credentialsId: 'ef5a6090-a979-4bfa-bca9-fa150d668498', variable: 'ENCRYPT_KEY')]) {
+                    bat "mvn test -Dtest=LaunchesServiceTestsWithConverter -DENCRYPT_KEY=${ENCRYPT_KEY} -Denv=local"
+                }
+            }
+            
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+				//Slack integration
+				always {
+					slackSend channel: 'test-automation-results',
+					message: "Report Portal Regression Pipeline Results:- ${currentBuild.currentResult} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${BUILD_URL}"
+				}
+            }
+        }
+    }
+}
