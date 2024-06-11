@@ -66,6 +66,8 @@
         <cucumber.version>7.16.1</cucumber.version>
         <couchbase.java.client.version>3.6.2</couchbase.java.client.version>
         <webdrivermanager.version>5.8.0</webdrivermanager.version>
+  <sonar.organization>oleksandr-fomenko</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
         <dependency>
